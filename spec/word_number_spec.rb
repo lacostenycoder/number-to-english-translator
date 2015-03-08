@@ -36,6 +36,17 @@ describe WordNumber do
     expect(number.suffix("three", 'teen')).to eq("thirteen")
     expect(number.suffix("five", 'teen')).to eq("fifteen")
   end
+  it "should add an appropriate suffix for ten words" do
+    expect(number.suffix("one", "ten")).to eq("ten")
+    expect(number.suffix("two", "ten")).to eq("twenty")
+    expect(number.suffix("three", "ten")).to eq("thirty")
+    expect(number.suffix("four", "ten")).to eq("forty")
+    expect(number.suffix("five", "ten")).to eq("fifty")
+    expect(number.suffix("six", "ten")).to eq("sixty")
+    expect(number.suffix("seven", "ten")).to eq("seventy")
+    expect(number.suffix("eight", "ten")).to eq("eighty")
+    expect(number.suffix("nine", "ten")).to eq("ninety")
+  end
   it "should add an appropriate suffix to hundred words" do
     expect(number.suffix("one", 'ten')).to eq('ten')
     expect(number.suffix("two", 'ten')).to eq("twenty")

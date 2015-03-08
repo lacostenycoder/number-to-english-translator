@@ -30,7 +30,6 @@ class WordNumber
     three_groups = words.reverse.each_slice(3).to_a.map{|a|a.reverse}.reverse
     three_groups = three_groups.map do |group|
       if group.length == 2
-        #num = self.number.first.last.to_s[0..1].to_i
         two_group = two_digits(group, num)
       end
       if two_group
@@ -59,7 +58,7 @@ class WordNumber
     if num.any?
       num = num.first.first
     else
-      # rescue block because of incosistent method call
+      # rescue block because of incosistent method call in rspec vs app
       begin
         num = self.number.first.last
       rescue

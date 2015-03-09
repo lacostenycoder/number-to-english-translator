@@ -6,8 +6,8 @@ class WordNumber
   DELINEATOR = ['thousand','million','billion','trillion','quadrillion','quintillion','sextillion','septillion','octillion','nonillion','decillion','undecillion','duodecillion','tredecillion','quattuordecillion','quindecillion','sexdecillion','septendecillion','octodecillion','novemdecillion','vigintillion']
   attr_accessor :number
 
-  def initialize(number)
-    @number = number
+  def initialize params = {}
+    params.each { |key, value| send "#{key}=", value }
   end
 
   def to_word(*num)
@@ -58,12 +58,7 @@ class WordNumber
     if num.any?
       num = num.first.first
     else
-      # rescue block because of incosistent method call in rspec vs app
-      begin
-        num = self.number.first.last
-      rescue
-        num = self.number
-      end
+      num = self.number
     end
     if num == 10
       return ['ten']
@@ -97,11 +92,7 @@ class WordNumber
       word = word.split(' ')
       word.pop
     else
-      if self.number.class == Hash
-        length = self.number.first.last.to_s.length
-      else
-        length = self.number.to_s.length
-      end
+      length = self.number.to_s.length
       if length >= 6
         deliniate = DELINEATOR[length/3-2]
       elsif length > 3
@@ -109,17 +100,11 @@ class WordNumber
       else
         deliniate == nil
       end
-
-      if self.number.class == Hash
-        num = self.number.first.last
-      else
         num = self.number
-      end
-
       if num > 10000
         last_three = self.number.to_s[-3,3].to_i
         last_3 = WordNumber.new(number: last_three)
-        num = last_3.number.first.last
+        num = last_3.number
         last_three_word = last_3.to_word(num)
       end
       word += ' ' + deliniate if deliniate

@@ -10,8 +10,8 @@ end
 
 describe WordNumber do
 
-  let (:number) {@number = WordNumber.new(number=2573317)}
-  #let (:number) {@number = WordNumber.new(number=1)}
+  let (:number) {@number = WordNumber.new(number: 2573317)}
+  #let (:number) {@number = WordNumber.new(number: 1)}
   it "should have a method called number_to_word" do
     expect(number).to respond_to :to_word
   end
@@ -56,14 +56,14 @@ describe WordNumber do
     expect(number.suffix("six", 'ten')).to eq("sixty")
   end
 
-  let (:num1) {@number = WordNumber.new(number=2573317)}
-  let (:num2) {@number = WordNumber.new(number=100)}
-  let (:num3) {@number = WordNumber.new(number=101)}
-  let (:num4) {@number = WordNumber.new(number=111)}
-  let (:num5) {@number = WordNumber.new(number=111111)}
-  let (:num6) {@number = WordNumber.new(number=200001)}
-  let (:num7) {@number = WordNumber.new(number=10221)}
-  let (:ten) {@number = WordNumber.new(number=10)}
+  let (:num1) {@number = WordNumber.new(number: 2573317)}
+  let (:num2) {@number = WordNumber.new(number: 100)}
+  let (:num3) {@number = WordNumber.new(number: 101)}
+  let (:num4) {@number = WordNumber.new(number: 111)}
+  let (:num5) {@number = WordNumber.new(number: 111111)}
+  let (:num6) {@number = WordNumber.new(number: 200001)}
+  let (:num7) {@number = WordNumber.new(number: 10221)}
+  let (:ten) {@number = WordNumber.new(number: 10)}
 
   it "should find correct words on all numbers" do
     expect(num1.to_word).to eq('two million five hundred and seventy three thousand three hundred and seventeen')
